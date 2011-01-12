@@ -1,0 +1,13 @@
+This is a continuation of the google app engine tutorial
+ 
+Google App Engine Tutorial for Java by, Lars Vogel
+
+I needed a shopping cart, and its not elegant,
+nor does it use a CMS, its just a bunch of servlets
+that connect to a google database.
+
+The model classes are: Orders, Groups, Users, Albums, Photos
+
+the application is running at
+
+https://ca-shellyphoto.appspot.com
