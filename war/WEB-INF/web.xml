@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	
+	
+	<welcome-file-list>
+	<welcome-file>index.html</welcome-file>
+	
+	</welcome-file-list>
+		<icon>
+		<small-icon>/favicon.ico</small-icon>
+		</icon>
+	<servlet>
+		<servlet-name>ClearOrders</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletClearOrders</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClearOrders</servlet-name>
+		<url-pattern>/clear</url-pattern>
+	</servlet-mapping>
+	
+	<!--Order -->
+	<servlet>
+		<servlet-name>CreateNewOrder</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletCreateOrder</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewOrder</servlet-name>
+		<url-pattern>/new</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>RemoveOrder</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemoveOrder</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveOrder</servlet-name>
+		<url-pattern>/done</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RemoveOrderA</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemoveOrderA</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveOrderA</servlet-name>
+		<url-pattern>/d</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+		<servlet>
+		<servlet-name>CreateNewPOPhoto</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletCreatePOPhoto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewPOPhoto</servlet-name>
+		<url-pattern>/newpop</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RemovePOPhoto</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemovePOPhoto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemovePOPhoto</servlet-name>
+		<url-pattern>/delpop</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>CreateNewPOUser</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletCreatePOUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewPOUser</servlet-name>
+		<url-pattern>/newpou</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RemovePOUser</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemovePOUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemovePOUser</servlet-name>
+		<url-pattern>/delpou</url-pattern>
+	</servlet-mapping>
+	
+	
+		
+	<servlet>
+		<servlet-name>CreateNewPOGroup</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletCreatePOGroup</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewPOGroup</servlet-name>
+		<url-pattern>/newpog</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RemovePOGroup</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemovePOGroup</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemovePOGroup</servlet-name>
+		<url-pattern>/delpog</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateNewPOAlbum</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletCreatePOAlbum</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewPOAlbum</servlet-name>
+		<url-pattern>/newpoa</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RemovePOAlbum</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletRemovePOAlbum</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemovePOAlbum</servlet-name>
+		<url-pattern>/delpoa</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addurl</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletAddurl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addurl</servlet-name>
+		<url-pattern>/addurl</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Delphotosinalbum</servlet-name>
+		<servlet-class>info.berryworks.photoorder.ServletDpia</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Delphotosinalbum</servlet-name>
+		<url-pattern>/dpia</url-pattern>
+	</servlet-mapping>
+
+
+
+
+</web-app>
