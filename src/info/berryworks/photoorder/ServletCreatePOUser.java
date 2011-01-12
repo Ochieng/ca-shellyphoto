@@ -18,12 +18,23 @@ import info.berryworks.photoorder.dao.Dao;
 public class ServletCreatePOUser extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException {
-		User user = (User) req.getAttribute("user");
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+
+		boolean lock = true;
+
 		if (user == null) {
-			UserService userService = UserServiceFactory.getUserService();
-			user = userService.getCurrentUser();
+			resp.sendRedirect("/index.html");
+			return;
 		}
 
+		if ( 0 == user.getEmail().compareTo("dirtslayer@gmail.com") ) lock = false;
+		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
+
+		if (lock) {
+			resp.sendRedirect("/index.html");
+			return;
+		}
 		
 		String name = checkNull(req.getParameter("name"));
 		String email = checkNull(req.getParameter("email"));
@@ -32,6 +43,7 @@ public class ServletCreatePOUser extends HttpServlet {
 		String notes = checkNull(req.getParameter("notes"));
 		String telephone = checkNull(req.getParameter("telephone"));
 		String address = checkNull(req.getParameter("address"));
+		
 		Dao.INSTANCE.addPOUser( name, email, telephone, mobile, address, notes, groupid);
 		
 		resp.sendRedirect("/POUserApplication.jsp");

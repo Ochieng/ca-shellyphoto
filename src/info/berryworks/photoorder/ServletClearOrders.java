@@ -19,17 +19,32 @@ public class ServletClearOrders extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException {
-	User user = (User) req.getAttribute("user");
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+
+		boolean lock = true;
+
 		if (user == null) {
-			UserService userService = UserServiceFactory.getUserService();
-			user = userService.getCurrentUser();
+			resp.sendRedirect("/index.html");
+			return;
 		}
-		List<Order> orders = Dao.INSTANCE.getOrders(user.getEmail());		
+
+		if ( 0 == user.getEmail().compareTo("dirtslayer@gmail.com") ) lock = false;
+		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
+
+		if (lock) {
+			resp.sendRedirect("/index.html");
+			return;
+		}
+
+		
+		
+		List<Order> orders = Dao.INSTANCE.listOrders();
 		for ( Order o : orders) {
 			Dao.INSTANCE.removeOrder(o.getId());
 		}
 		
-		resp.sendRedirect("/OrderApplication.jsp");
+		resp.sendRedirect("/index.html");
 	}
 
 

@@ -7,16 +7,51 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import info.berryworks.photoorder.dao.Dao;
 
 @SuppressWarnings("serial")
 public class ServletAddurl extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException {
+		
 		String surl = checkNull(req.getParameter("url"));
 		String albumid = checkNull(req.getParameter("albumid"));	
 		String width = checkNull(req.getParameter("width"));	
 	
+		
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+
+		boolean lock = true;
+
+		if (user == null) {
+			
+			return;
+		}
+
+		if ( 0 == user.getEmail().compareTo("dirtslayer@gmail.com") ) lock = false;
+		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
+
+		if (lock) {
+
+			return;
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		List<String> imgs =  info.berryworks.photoorder.dao.Net.getImages(surl);
 		
