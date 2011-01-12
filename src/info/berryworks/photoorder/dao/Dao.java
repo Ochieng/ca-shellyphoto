@@ -13,7 +13,7 @@ public enum Dao {
 	INSTANCE;
 
 	public String xml() {
-		String out = "";
+		StringBuilder out = new StringBuilder();
 		
 		List<Order> orders = listOrders();
 		List<POAlbum> albums = listPOAlbums();
@@ -21,29 +21,30 @@ public enum Dao {
 		List<POPhoto> photos = this.listPOPhotos();
 		List<POUser> users = this.listPOUsers();
 		
-		out = "<photoorder>";
+		out.append("<photoorder>");
 		
 		for (Order order : orders) {
-			out += order.toString();
+			out.append( order.toString() );
 		}
 		
 		for (POAlbum album : albums) {
-			out += album.toString();
+			out.append( album.toString() );
 		}
 		
 		for (POGroup group : groups) {
-			out += group.toString();
+			out.append( group.toString() );
 		}
 		
 		for (POPhoto photo : photos) {
-			out += photo.toString();
+			out.append(photo.toString());
 		}
 		
 		for (POUser user : users) {
-			out += user.toString();
+			out.append( user.toString() );
 		}
-		out += "</photoorder>";
-		return out;
+		out.append( "</photoorder>" );
+		
+		return out.toString();
 			 
 	}
 	
