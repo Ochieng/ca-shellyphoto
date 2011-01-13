@@ -6,12 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Model class which will store the Order Items
+ * Model class which will store the User Items
  * 
  * @author Darrell Dupas
- * admin creates user with just email, upon 1st login, user will 
- * set the rest of the fields
+ * 
  */
+
 @Entity
 public class POUser {
 	@Id

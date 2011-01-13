@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Model class which will store the Order Items
+ * Model class which will store the Group Items
  * 
  * @author Darrell Dupas
  * 
