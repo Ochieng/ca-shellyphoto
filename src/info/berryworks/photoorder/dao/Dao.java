@@ -1,11 +1,12 @@
 package info.berryworks.photoorder.dao;
+// i did not need to rename this package really -  was: 
+//package de.vogella.gae.java.todo.dao.Dao
+
 
 
 import javax.persistence.Query;
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
 import info.berryworks.photoorder.model.*;
 
 
