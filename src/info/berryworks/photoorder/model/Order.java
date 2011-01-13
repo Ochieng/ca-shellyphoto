@@ -18,11 +18,6 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Long orderid;
-	private Long confirmid;
-	private Long emailconfirmid;
-	private Long paidid;
-	
 	private String customeremail;
 	private String photourl;
 	private String type;  
@@ -35,33 +30,9 @@ public class Order {
 	private String paiddate;
 	private String finisheddate;
 
-	
-	public Order( Order o) {
-	//	this.id = o.id;
-		
-		this.orderid = o.orderid;
-		this.confirmid = o.confirmid;
-		this.emailconfirmid = o.emailconfirmid;
-		this.paidid = o.paidid;
-		
-		this.customeremail = o.customeremail;
-		this.photourl = o.photourl;
-		this.type = o.type;
-		this.quantity = o.quantity;
-		this.price = o.price;
-		this.albumid = o.albumid;
-		this.orderdate = o.orderdate;
-		this.confirmeddate = o.confirmeddate;
-		this.emailconfirmeddate = o.confirmeddate;
-		this.paiddate = o.paiddate;
-		this.finisheddate = o.finisheddate;
-	}
-	
-	
 	public Order(String customeremail, String photourl, String type,
 			String quantity, String albumid, String orderdate ) {
-		
-		String price;
+
 		int iquantity = 0;
 		double costper = 0.5;
 		if ( 0 == type.compareTo("add to cd") ) {
@@ -91,9 +62,7 @@ public class Order {
 		}
 		
 		iquantity =  Integer.parseInt(quantity);
-
-
-		
+	
 		this.customeremail = customeremail; 
 		this.photourl = photourl; 
 		this.type = type;  
@@ -106,42 +75,11 @@ public class Order {
 		
 	}
 	
-	 
-	public void setOrderid(Long orderid) {
-		this.orderid = orderid;
-		return;
-	}
-	public Long getOrderid() {
-	 	return this.orderid;
-	 }
-	 
-	 public void setConfirmid(Long confirmid) {
-		this.confirmid = confirmid;
-	  	return;
-	  }
-	  public Long getConfirmid() {
-	  	return this.confirmid;
-	  }
-	  
-	  public void setEmailconfirmid(Long emailconfirmid) {
-	  	this.emailconfirmid = emailconfirmid;
-	  }
-	  public Long getEmailconfirmid() {
-	  	return this.emailconfirmid;
-	  }
-	  
-	  public void setPaidid(Long paidid) {
-			this.paidid = paidid;
-		     return;
-	}
-	public Long getPaidid() {
-		return this.paidid;
-	}
-	
+	/*
 	private String nullltos(Long L) {
 		if (L == null) return "";
 		return ""+L;
-	}
+	}*/
 	private String nullstos(String S) {
 		if (S==null) return "";
 		return S;
@@ -151,10 +89,6 @@ public class Order {
 	public String toString() {
 		String out = "<order>" + "\n" +
 				"<id>" + this.id + "</id>" + "\n" +	
-		"<orderid>" +  this.nullltos(orderid) + "</orderid>" + "\n" +
-		"<confirmid>" + this.nullltos(confirmid) + "</confirmid>" + "\n" +
-		"<emailconfirmid>" + this.nullltos(emailconfirmid) + "</emailconfirmid>" + "\n" +
-		"<paidid>" +  this.nullltos(paidid) + "</paidid>" + "\n" +
 		"<orderdate>" + this.orderdate + "</orderdate>" + "\n" +
 		"<confirmeddate>" + this.nullstos( confirmeddate) + "</confirmeddate>" + "\n" +
 		"<emailconfirmeddate>" + this.nullstos( emailconfirmeddate) +  "</emailconfirmeddate>" + "\n" +	
@@ -250,7 +184,6 @@ public class Order {
 	}
 	
 	public String getStatusString() {
-		String ret = null;
 		int is = getStatusInt();
 		
 		if ( is == 5) return "finished";

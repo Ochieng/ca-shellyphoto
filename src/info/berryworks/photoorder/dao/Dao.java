@@ -140,8 +140,6 @@ public enum Dao {
 	}
 	
 	
-	
-	
 	public List<POAlbum> listPOAlbums() {
 		EntityManager em = EMFService.get().createEntityManager();
 		// Read the existing entries

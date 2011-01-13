@@ -138,22 +138,20 @@ An email has been sent to you to confirm your order.
 
 <%
 // move orders to confirm status
+Order ox = null;
 
 for ( Order o : conforders)  {
-		Order co = new Order(o);
-		co.setConfirmeddate(confdate);		
-		co.setOrderid(o.getId());
+		
 		o.setConfirmeddate(confdate);
-		o.setOrderid(o.getId());
+	
 		em = EMFService.get().createEntityManager();
-		em.persist(co);
+		ox = em.find(Order.class,o.getId());
+		
+		ox.setConfirmeddate(confdate);
+		
 		em.close();	
 }
 
-
-for ( Order o : conforders)  {
-	Dao.INSTANCE.removeOrder(o.getId());
-}
 
 javax.mail.Address[] addresses = new javax.mail.Address[4];
 	addresses[3] = new javax.mail.internet.InternetAddress(

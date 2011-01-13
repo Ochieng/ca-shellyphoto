@@ -1,11 +1,8 @@
 package info.berryworks.photoorder.dao;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -18,7 +15,6 @@ public static void printimages(String surl) {
 	String html = get(surl);
 	int fromindex = 0;
 	int endindex = 0;
-	int len = html.length();
 	while ( true ) {
 		fromindex = html.indexOf("<img src=\"", fromindex);
 		if ( fromindex == -1) break;
@@ -34,7 +30,6 @@ public static List<String> getImages(String surl) {
 	List < String >  imgs = new ArrayList < String >  (  ) ; 
 	int fromindex = 0;
 	int endindex = 0;
-	int len = html.length();
 	while ( true ) {
 		fromindex = html.indexOf("<img src=\"", fromindex);
 		if ( fromindex == -1) break;

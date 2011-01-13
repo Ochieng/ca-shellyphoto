@@ -63,7 +63,7 @@ public class ServletAddurl extends HttpServlet {
 		
 		
 		int i,j;
-		String f,g,h;
+		String f,g;
 		
 		for ( String img : imgs ) {
 			i = img.lastIndexOf('/');
