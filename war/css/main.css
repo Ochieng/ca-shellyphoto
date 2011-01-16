@@ -83,7 +83,7 @@ img.cardimg {
 
 div.card{	
 	outline-color : black;
-	outline-width: 1;
+	outline-width : thin;
 	outline-style: solid;
  	margin-bottom : .65cm;
 	margin-right:.5cm;
