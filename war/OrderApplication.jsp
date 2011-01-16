@@ -14,10 +14,50 @@
 <html>
 <head>
 <title>Orders</title>
+
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<meta charset="utf-8">
+<meta charset="utf-8">  
+<script type='text/javascript'>
+  //<![CDATA[ 
+             
+  function setscroll() { 
+	  setCookie('scrollpos',pageYOffset,1);
+  }
+             
+  function scroll() {
+	  	window.scrollTo(0,getCookie('scrollpos'));
+  }
+  
+  // taken from w3schools javascript cookie reference
+  function getCookie(c_name)
+  {
+  if (document.cookie.length>0)
+    {
+    c_start=document.cookie.indexOf(c_name + "=");
+    if (c_start!=-1)
+      {
+      c_start=c_start + c_name.length+1;
+      c_end=document.cookie.indexOf(";",c_start);
+      if (c_end==-1) c_end=document.cookie.length;
+      return unescape(document.cookie.substring(c_start,c_end));
+      }
+    }
+  return "0";
+  }
+
+  function setCookie(c_name,value,expiredays)
+  {
+  var exdate=new Date();
+  exdate.setDate(exdate.getDate()+expiredays);
+  document.cookie=c_name+ "=" +escape(value)+
+  ((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+  }
+  
+  //]]> 
+  </script>
+
 </head>
-<body>
+<body onload='scroll()' onunload="setscroll()">
 <%
 	List<Order> orders = null;
 	List<POAlbum> albums = null;
@@ -48,7 +88,7 @@
 		} catch ( Exception e) {;}
 	}
 %>
-	 		 
+	 <div id="debug"></div>		 
 <a href="<%=userService.createLogoutURL(request.getRequestURI())%>" >
 Logout 
 <%=pouser.getGroupid()%>
@@ -83,7 +123,7 @@ for ( Order o : orders) {
 %>
 
 <h1> total = $<%=new java.text.DecimalFormat("0.00").format(total) %></h1>
-	
+<br/>	
 	<%
 Order order = null;
 java.util.ListIterator<Order> iter = orders.listIterator(orders.size());
