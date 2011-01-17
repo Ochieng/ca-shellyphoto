@@ -26,7 +26,7 @@ public class ServletDpia extends HttpServlet {
 		boolean lock = true;
 
 		if (user == null) {
-			resp.sendRedirect("/index.html");
+			resp.sendRedirect("/");
 			return;
 		}
 
@@ -34,7 +34,7 @@ public class ServletDpia extends HttpServlet {
 		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
 
 		if (lock) {
-			resp.sendRedirect("/index.html");
+			resp.sendRedirect("/");
 			return;
 		}
 		

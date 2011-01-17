@@ -22,22 +22,6 @@ public class ServletCreateOrder extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 
-		boolean lock = true;
-
-		if (user == null) {
-			resp.sendRedirect("/index.html");
-			return;
-		}
-
-		if ( 0 == user.getEmail().compareTo("dirtslayer@gmail.com") ) lock = false;
-		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
-
-		if (lock) {
-			resp.sendRedirect("/index.html");
-			return;
-		}
-	
-	
 		String photourl = checkNull(req.getParameter("photourl")) ;
 		String type = checkNull(req.getParameter("type"));
 		String quantity =  checkNull(req.getParameter("quantity"));

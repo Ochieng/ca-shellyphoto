@@ -23,7 +23,7 @@ public class ServletRemoveOrder extends HttpServlet {
 		User user = userService.getCurrentUser();
 
 		if (user == null) {
-			resp.sendRedirect("/index.html");
+			resp.sendRedirect("/");
 			return;
 		}
 

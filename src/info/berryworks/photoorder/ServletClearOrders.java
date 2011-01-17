@@ -25,7 +25,7 @@ public class ServletClearOrders extends HttpServlet {
 		boolean lock = true;
 
 		if (user == null) {
-			resp.sendRedirect("/index.html");
+			resp.sendRedirect("/");
 			return;
 		}
 
@@ -33,7 +33,7 @@ public class ServletClearOrders extends HttpServlet {
 		if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
 
 		if (lock) {
-			resp.sendRedirect("/index.html");
+			resp.sendRedirect("/");
 			return;
 		}
 
@@ -44,7 +44,7 @@ public class ServletClearOrders extends HttpServlet {
 			Dao.INSTANCE.removeOrder(o.getId());
 		}
 		
-		resp.sendRedirect("/index.html");
+		resp.sendRedirect("/");
 	}
 
 
