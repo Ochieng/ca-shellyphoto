@@ -114,15 +114,17 @@ if (photourl == null) {
 %>
 <% 	
 
+java.util.Date n = new java.util.Date();
 
+
+/* 
+//i had a human readable date but opted for a more computer managable representation
 java.util.TimeZone edmontontz = java.util.TimeZone.getTimeZone("Canada/Mountain");  
 java.util.Calendar calendar = new java.util.GregorianCalendar(edmontontz);
-
-java.util.Date n = new java.util.Date();
 java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("MMM dd, hh:mm:ss");
 df.setTimeZone(edmontontz);
 String orderdate = df.format(n); 
-
+*/
 
 String printtype = request.getParameter("type");
 
@@ -136,7 +138,7 @@ if ( printtype == null ) {
 <input type="hidden" name="photourl" id="photourl" value="<%=photourl%>"  />
 <input type="hidden" name="albumid" id="albumid" value="<%=albumid%>"  />
 <input type="hidden" name="type" id="type" value="add to cd" />
-<input type="hidden" name="orderdate" id="orderdate" value="<%=orderdate %>" />
+<input type="hidden" name="orderdate" id="orderdate" value="<%=n.getTime() %>" />
 <input  type="hidden" name="quantity" id="quantity" value="1"/>
 <input type="submit" name="type" id="type" value="add to cd" />
 </form>
@@ -170,7 +172,7 @@ if ( quantity == null ) {
 <input type="hidden" name="photourl" id="photourl" value="<%=photourl%>"  />
 <input type="hidden" name="albumid" id="albumid" value="<%=albumid%>"  />
 <input type="hidden" name="type" id="type" value="<%=printtype %>" />
-<input type="hidden" name="orderdate" id="orderdate" value="<%=orderdate %>" />
+<input type="hidden" name="orderdate" id="orderdate" value="<%=n.getTime() %>" />
 <input  type="submit" name="quantity" id="quantity" value="1"/>
 <input  type="submit" name="quantity" id="quantity" value="2"/>
 <input  type="submit" name="quantity" id="quantity" value="3"/>

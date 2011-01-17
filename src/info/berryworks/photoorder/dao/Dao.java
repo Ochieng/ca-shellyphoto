@@ -54,7 +54,7 @@ public enum Dao {
 	public List<Order> listOrders() {
 		EntityManager em = EMFService.get().createEntityManager();
 		// Read the existing entries
-		javax.persistence.Query q = em.createQuery("select m from Order m");
+		javax.persistence.Query q = em.createQuery("select m from Order m order by orderdate");
 		List<Order> orders = q.getResultList();
 		return orders;
 	}
