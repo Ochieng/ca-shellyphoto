@@ -29,7 +29,7 @@ public class ServletRemoveOrder extends HttpServlet {
 
 		
 		String id = req.getParameter("id");
-		Dao.INSTANCE.removeOrder(Long.parseLong(id));
+		Dao.INSTANCE.removePOOrder(Long.parseLong(id));
 		
 		resp.sendRedirect("/OrderApplication.jsp");
 	}

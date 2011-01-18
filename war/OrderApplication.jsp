@@ -3,7 +3,7 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page import="info.berryworks.photoorder.model.Order"%>
+<%@ page import="info.berryworks.photoorder.model.POOrder"%>
 <%@ page import="info.berryworks.photoorder.model.POUser"%>
 <%@ page import="info.berryworks.photoorder.model.POAlbum"%>
 <%@ page import="info.berryworks.photoorder.model.POPhoto"%>
@@ -59,7 +59,7 @@
 </head>
 <body onload='scroll()' onunload="setscroll()">
 <%
-	List<Order> orders = null;
+	List<POOrder> orders = null;
 	List<POAlbum> albums = null;
 	List<POPhoto> photos = null;
 	POUser pouser = null;
@@ -103,7 +103,7 @@ Logout
 <a href="/Confirm.jsp">confirm order ...</a>
 <br/>
 <%
-orders = Dao.INSTANCE.getOrders(user.getEmail());
+orders = Dao.INSTANCE.getPOOrders(user.getEmail());
 if (orders == null) {
 %>
 </body>
@@ -116,7 +116,7 @@ return;
 <%	
 
 Double total = 0.0;
-for ( Order o : orders) {
+for ( POOrder o : orders) {
 	if ( o.getStatusInt() > 1 ) continue;
 	total +=  Double.parseDouble(o.getPrice());
 }
@@ -125,10 +125,10 @@ for ( Order o : orders) {
 <h1> total = $<%=new java.text.DecimalFormat("0.00").format(total) %></h1>
 <br/>	
 	<%
-Order order = null;
-java.util.ListIterator<Order> iter = orders.listIterator(orders.size());
+POOrder order = null;
+java.util.ListIterator<POOrder> iter = orders.listIterator(orders.size());
 while (iter.hasPrevious()) {
-	order = (Order) iter.previous();	
+	order = (POOrder) iter.previous();	
 	
 	if ( order.getStatusInt() > 1 ) continue;
 	

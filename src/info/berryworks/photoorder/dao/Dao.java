@@ -16,7 +16,7 @@ public enum Dao {
 	public String xml() {
 		StringBuilder out = new StringBuilder();
 		
-		List<Order> orders = listOrders();
+		List<POOrder> orders = listPOOrders();
 		List<POAlbum> albums = listPOAlbums();
 		List<POGroup> groups = this.listPOGroups();
 		List<POPhoto> photos = this.listPOPhotos();
@@ -24,7 +24,7 @@ public enum Dao {
 		
 		out.append("<photoorder>");
 		
-		for (Order order : orders) {
+		for (POOrder order : orders) {
 			out.append( order.toString() );
 		}
 		
@@ -51,38 +51,38 @@ public enum Dao {
 	
 
 	
-	public List<Order> listOrders() {
+	public List<POOrder> listPOOrders() {
 		EntityManager em = EMFService.get().createEntityManager();
 		// Read the existing entries
-		javax.persistence.Query q = em.createQuery("select m from Order m order by orderdate");
-		List<Order> orders = q.getResultList();
+		javax.persistence.Query q = em.createQuery("select * from POOrder order by orderdate");
+		List<POOrder> orders =  q.getResultList();
 		return orders;
 	}
 
-	public void addOrder(String customeremail, String photoid, String type,
+	public void addPOOrder(String customeremail, String photoid, String type,
 			String quantity, String albumid, String orderdate ) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Order order = new Order( customeremail,  photoid,  type,
+			POOrder order = new POOrder( customeremail,  photoid,  type,
 					 quantity, albumid, orderdate  );
 			em.persist(order);
 			em.close();
 		}
 	}
 
-	public List<Order> getOrders(String customeremail) {
+	public List<POOrder> getPOOrders(String customeremail) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
-				.createQuery("select t from Order t where t.customeremail = :customeremail");
+				.createQuery("select t from POOrder t where t.customeremail = :customeremail");
 		q.setParameter("customeremail", customeremail);
-		List<Order> orders = q.getResultList();
+		List<POOrder> orders = q.getResultList();
 		return orders;
 	}
 
-	public void removeOrder(long id) {
+	public void removePOOrder(long id) {
 		EntityManager em = EMFService.get().createEntityManager();
 		try {
-			Order order = em.find(Order.class, id);
+			POOrder order = em.find(POOrder.class, id);
 			em.remove(order);
 		} finally {
 			em.close();

@@ -29,7 +29,7 @@ public class ServletCreateOrder extends HttpServlet {
 		String orderdate = checkNull(req.getParameter("orderdate"));
 		
 	
-		Dao.INSTANCE.addOrder(user.getEmail(), photourl, type, quantity, x,orderdate);
+		Dao.INSTANCE.addPOOrder(user.getEmail(), photourl, type, quantity, x,orderdate);
 		resp.sendRedirect("/OrderApplication.jsp");
 	}
 

@@ -3,7 +3,7 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page import="info.berryworks.photoorder.model.Order"%>
+<%@ page import="info.berryworks.photoorder.model.POOrder"%>
 <%@ page import="info.berryworks.photoorder.model.POUser"%>
 <%@ page import="info.berryworks.photoorder.model.POAlbum"%>
 <%@ page import="info.berryworks.photoorder.model.POPhoto"%>
@@ -19,7 +19,7 @@
 </head>
 <body>
 <%
-List<Order> orders = null;
+List<POOrder> orders = null;
 List<POAlbum> albums = null;
 List<POPhoto> photos = null;
 POUser pouser = null;

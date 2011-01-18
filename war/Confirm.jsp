@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="java.util.List"  %>
-<%@ page import="info.berryworks.photoorder.model.Order"%>
+<%@ page import="info.berryworks.photoorder.model.POOrder"%>
 <%@ page import="info.berryworks.photoorder.model.POUser"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
@@ -23,8 +23,8 @@
 </head>
 <body>
 <%
-List<Order> orders = null;
-ArrayList<Order> conforders = null;
+List<POOrder> orders = null;
+ArrayList<POOrder> conforders = null;
 POUser pouser = null;
 UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
@@ -61,7 +61,7 @@ try {
 	//orders = Dao.INSTANCE.getOrders(user.getEmail());
 	em = EMFService.get().createEntityManager();
 	Query q = em
-			.createQuery("select t from Order t where t.customeremail = :customeremail");
+			.createQuery("select t from POOrder t where t.customeremail = :customeremail");
 	q.setParameter("customeremail", pouser.getEmail());
 	orders = q.getResultList();
 	
@@ -70,7 +70,7 @@ try {
 	
 	
 	Double total = 0.0;
-	for (Order o : orders) {
+	for (POOrder o : orders) {
 		if (o.getStatusInt() == 1)
 			total += Double.parseDouble(o.getPrice());
 	}
@@ -98,11 +98,11 @@ try {
 // could figure out how to get the database objects entity
 // manager so that i coudl persist it, but the entity manager
 // for that object is not at hand
-Order order = null;
- conforders = new ArrayList<Order>();
-java.util.ListIterator<Order> iter = orders.listIterator(orders.size());
+POOrder order = null;
+ conforders = new ArrayList<POOrder>();
+java.util.ListIterator<POOrder> iter = orders.listIterator(orders.size());
 while (iter.hasPrevious()) {
-	order = (Order) iter.previous();
+	order = (POOrder) iter.previous();
 	if (order.getStatusInt() == 1) {
 		conforders.add(order);
 	}
@@ -138,14 +138,14 @@ An email has been sent to you to confirm your order.
 
 <%
 // move orders to confirm status
-Order ox = null;
+POOrder ox = null;
 
-for ( Order o : conforders)  {
+for ( POOrder o : conforders)  {
 		
 		o.setConfirmeddate(confdate);
 	
 		em = EMFService.get().createEntityManager();
-		ox = em.find(Order.class,o.getId());
+		ox = em.find(POOrder.class,o.getId());
 		
 		ox.setConfirmeddate(confdate);
 		
@@ -189,7 +189,7 @@ htmlmail += "\n";
 htmlmail += "\n";
 
 
-for ( Order o : conforders)  {
+for ( POOrder o : conforders)  {
 	htmlmail += "\n" + o.getPhotoid();
 	htmlmail += "\n" + o.getAlbumid();
 	htmlmail += "\n" + o.getOrderdate();
@@ -205,7 +205,7 @@ for ( Order o : conforders)  {
 
 htmlmail += "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<xml><!-- ---------------- debug --------------------  -->\n\n";
 
-for ( Order o : conforders)  {
+for ( POOrder o : conforders)  {
 	htmlmail += "\n\n" + o.toString();
 }
 htmlmail +="</xml>";%>

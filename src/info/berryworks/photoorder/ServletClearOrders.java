@@ -12,7 +12,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import info.berryworks.photoorder.dao.Dao;
-import info.berryworks.photoorder.model.Order;
+import info.berryworks.photoorder.model.POOrder;
 
 @SuppressWarnings("serial")
 public class ServletClearOrders extends HttpServlet {
@@ -39,9 +39,9 @@ public class ServletClearOrders extends HttpServlet {
 
 		
 		
-		List<Order> orders = Dao.INSTANCE.listOrders();
-		for ( Order o : orders) {
-			Dao.INSTANCE.removeOrder(o.getId());
+		List<POOrder> orders = Dao.INSTANCE.listPOOrders();
+		for ( POOrder o : orders) {
+			Dao.INSTANCE.removePOOrder(o.getId());
 		}
 		
 		resp.sendRedirect("/");

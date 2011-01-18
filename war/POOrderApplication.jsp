@@ -3,7 +3,7 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page import="info.berryworks.photoorder.model.Order"%>
+<%@ page import="info.berryworks.photoorder.model.POOrder"%>
 <%@ page import="info.berryworks.photoorder.model.POUser"%>
 <%@ page import="info.berryworks.photoorder.model.POAlbum"%>
 <%@ page import="info.berryworks.photoorder.model.POPhoto"%>
@@ -50,10 +50,10 @@ if (lock) {
 
 %>
 <%
-List<Order> orders = null;
+List<POOrder> orders = null;
 POUser pouser = null;
 	
-orders = Dao.INSTANCE.listOrders();
+orders = Dao.INSTANCE.listPOOrders();
 if (orders == null) {
 
 %>
@@ -69,7 +69,7 @@ return;
 
 double [] total = new double[5];
 
-for ( Order o : orders) {
+for ( POOrder o : orders) {
 	total[o.getStatusInt()-1] += Double.parseDouble(o.getPrice());	
 }
 %>
@@ -81,10 +81,10 @@ for ( double d : total) {
  }
 %>
 <%
-Order order = null;
-java.util.ListIterator<Order> iter = orders.listIterator(orders.size());
+POOrder order = null;
+java.util.ListIterator<POOrder> iter = orders.listIterator(orders.size());
 while (iter.hasPrevious()) {
-	order = (Order) iter.previous();	
+	order = (POOrder) iter.previous();	
 	
 %>
 	<div class="card">	
