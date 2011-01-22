@@ -17,6 +17,7 @@ public class POOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String orderdate;
 	
 	private String customeremail;
 	private String photourl;
@@ -24,7 +25,7 @@ public class POOrder {
 	private String quantity;
 	private String price; 
 	private String albumid;
-	private String orderdate;
+	
 	private String confirmeddate;
 	private String emailconfirmeddate;
 	private String paiddate;

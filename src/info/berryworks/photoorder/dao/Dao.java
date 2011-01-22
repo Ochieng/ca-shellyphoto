@@ -12,7 +12,8 @@ import info.berryworks.photoorder.model.*;
 
 public enum Dao {
 	INSTANCE;
-
+  
+	
 	public String xml() {
 		StringBuilder out = new StringBuilder();
 		
@@ -54,7 +55,7 @@ public enum Dao {
 	public List<POOrder> listPOOrders() {
 		EntityManager em = EMFService.get().createEntityManager();
 		// Read the existing entries
-		javax.persistence.Query q = em.createQuery("select * from POOrder order by orderdate");
+		javax.persistence.Query q = em.createQuery("select r from POOrder r order by orderdate desc");
 		List<POOrder> orders =  q.getResultList();
 		return orders;
 	}
@@ -73,7 +74,7 @@ public enum Dao {
 	public List<POOrder> getPOOrders(String customeremail) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
-				.createQuery("select t from POOrder t where t.customeremail = :customeremail");
+				.createQuery("select t from POOrder t where t.customeremail = :customeremail order by orderdate desc");
 		q.setParameter("customeremail", customeremail);
 		List<POOrder> orders = q.getResultList();
 		return orders;

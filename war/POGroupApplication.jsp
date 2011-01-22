@@ -18,9 +18,6 @@
 </head>
 <body>
 <%
-
-String albumid = "use cookie";
-
 Dao dao = Dao.INSTANCE;
 
 UserService userService = UserServiceFactory.getUserService();
@@ -33,11 +30,7 @@ List< POGroup > groups = new ArrayList< POGroup >();
 if (user != null){
     url = userService.createLogoutURL(request.getRequestURI());
     urlLinktext = "Logout";
-    System.out.print("getting groups");
-    System.out.print("before listPOGroups");
     groups = dao.listPOGroups();
-    System.out.print("after listPOGroups");
-    System.out.print(" size " + groups.size());
 }
     
 %>
