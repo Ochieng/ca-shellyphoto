@@ -126,25 +126,6 @@ for ( POOrder o : orders) {
 <br/>	
 	<%
 	
-// this totally sucks, jpa has a problem with the order by clause, i have
-// left the order by clause in Dao.INSTANCE.getPOOrders(user.getEmail());
-// because it works in datanucleus at home, run from eclise, 
-
-// but when this same app is hosted by google the order by clause does not work
-// so now i have to write a fricken inner class Comaritor and pass it to Sort fuck
-// it might be easier to switch to jdo
-
-
-	
-	
-	
-	
-orders = Dao.INSTANCE.getPOOrders(user.getEmail());
-	
-//POOrder order = null;
-//java.util.ListIterator<POOrder> iter = orders.listIterator(orders.size());
-//while (iter.hasPrevious()) {
-//	order = (POOrder) iter.previous();	
 for (POOrder order : orders)	 {
 	if ( order.getStatusInt() > 1 ) continue;
 	
