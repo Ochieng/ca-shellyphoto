@@ -49,31 +49,27 @@ h1, hr{
 	}
 a {
 	text-decoration: none;
-	color: white;
+	color: #009ACD;
 	
 }
-a:hover {color:#ffff66}  /* mouse over link */
+a:hover {color:green}  /* mouse over link */
 
 body {
 	font-family: arial, geneva;
-	font-size: 13px;
-	margin-left: 1cm;
+	font-size: 15px;
+	margin-left: 2cm;
 	margin-top: 1.5cm;
 	margin-bottom:5cm;
-	background-image: url("http://www.shellyphoto.ca/_/rsrc/1291404661687/config/customLogo.gif?revision=5");
-background-attachment : fixed;
-	background-repeat: no-repeat;
-     background-color: #330000;
-     color: white;
-     
-     
-     
+     background-color: #D1EEEE;
+     color: black;
+
 }
 div.smallfont {
 	font-size: 10px;
+	clear: both;
 }
 
-img, div.flowlayout,td,th{	
+div.flowlayout,td,th{	
 	margin : 10px;
 	float: left;
 	overflow:hidden;
@@ -82,6 +78,26 @@ img, div.flowlayout,td,th{
 img.cardimg {
 	float:none;
 	clear:both;
+}
+img.butterfly {
+	float:right;
+	clear:none;
+}
+
+iframe.slideshow {
+	float:right;
+	clear:none;
+}
+
+iframe.facebookbox {
+	float:right;
+	clear:none;
+}
+
+
+p {
+	width:50%;
+	padding-bottom: 1cm;
 }
 
 div.card{	
@@ -94,7 +110,7 @@ div.card{
 	float: left;
 	overflow:hidden;
 	overflow: hidden;
-	background-color: black;
+	background-color: #8B8378;
 	
 //	overflow: auto;
 -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
@@ -108,12 +124,12 @@ padding: 5px;
 
 div.cardhead {
 	font-weight : bold;	
-	background-color: black;
+	background-color: #8B8378;
 }
 
 div.cardbody {
 	margin-left: .1cm;
-	background-color: black;
+	// background-color: black;
 }
 
 div.page-break { 

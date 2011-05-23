@@ -16,6 +16,9 @@
 <title>Users</title>
 </head>
 <body>
+<a href="/" ><img src="./img/shellyphoto.png" />
+ </a><br/>
+
 <%
 UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
@@ -88,10 +91,9 @@ if (lock) {
 <br/>
 <br/>
 
-<a href="http://berryworks.info">http://berryworks.info</a><br/>
-	<a href="http://www.google.com/search?q=j2ee+java">made with java</a><br/>
-	<a href="http://www.google.com/search?q=gae+appengine">made with google app engine</a><br/>	
-
+<a href="http://berryworks.info">made by http://berryworks.info</a><br/>
+	<img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
+alt="Powered by Google App Engine" />
 
 </body>
 </html>

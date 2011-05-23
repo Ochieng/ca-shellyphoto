@@ -1,18 +1,85 @@
 package info.berryworks.photoorder.dao;
-// i did not need to rename this package really -  was: 
-//package de.vogella.gae.java.todo.dao.Dao
 
+import info.berryworks.photoorder.model.POAlbum;
+import info.berryworks.photoorder.model.POGroup;
+import info.berryworks.photoorder.model.POOrder;
+import info.berryworks.photoorder.model.POPhoto;
+import info.berryworks.photoorder.model.POUser;
+import info.berryworks.photoorder.model.Todo;
 
-
-import javax.persistence.Query;
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import info.berryworks.photoorder.model.*;
+import javax.persistence.Query;
+
+
+
+
 
 
 public enum Dao {
 	INSTANCE;
-  
+
+	public List<Todo> listTodos() {
+		EntityManager em = EMFService.get().createEntityManager();
+		// Read the existing entries
+		Query q = em.createQuery("select m from Todo m");
+		List<Todo> todos = q.getResultList();
+		return todos;
+	}
+
+	public void add(String userId, String summery, String description,
+			String url) {
+		synchronized (this) {
+			EntityManager em = EMFService.get().createEntityManager();
+			Todo todo = new Todo(userId, summery, description, url);
+			em.persist(todo);
+			em.close();
+		}
+	}
+
+	public List<Todo> getTodos(String userId) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em
+				.createQuery("select t from Todo t where t.author = :userId");
+		q.setParameter("userId", userId);
+		List<Todo> todos = q.getResultList();
+		return todos;
+	}
+
+	public void remove(long id) {
+		EntityManager em = EMFService.get().createEntityManager();
+		try {
+			Todo todo = em.find(Todo.class, id);
+			em.remove(todo);
+		} finally {
+			em.close();
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	public String xml() {
 		StringBuilder out = new StringBuilder();
@@ -245,3 +312,7 @@ public enum Dao {
 	}
 	
 }
+
+
+
+

@@ -154,6 +154,20 @@ if ( printtype == null ) {
 <input  type="submit" name="type" id="type" value="wallets (8)"/>
 	
 </form>
+
+<br/><br/>
+<pre>
+16 x 20 wall portrait		$30.00						
+11x14 wall portrait		$20.00						
+8x10				$10.00						
+5x7				$ 5.00						
+4x6				$ 3.00				
+3.5x5				$ 2.50						
+wallets (8)			$10.00	
+add to cd			$ 0.50	
+</pre>
+
+
 </body>
 </html>
 <%

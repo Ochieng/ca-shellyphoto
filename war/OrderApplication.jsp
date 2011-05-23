@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Orders</title>
+<title>Shelly Photo - Order Prints</title>
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <meta charset="utf-8">  
@@ -58,6 +58,9 @@
 
 </head>
 <body onload='scroll()' onunload="setscroll()">
+<a href="/" ><img src="./img/shellyphoto.png" />
+ </a>
+
 <%
 	List<POOrder> orders = null;
 	List<POAlbum> albums = null;
@@ -159,7 +162,7 @@ for (POOrder order : orders)	 {
 <br/><br/><br/>
 <br/><br/>
     <div class="smallfont">
-    <a href="/Admin.jsp"><h1>shelly photo 2011</h1></a>
+    <a href="/Admin.jsp">shelly photo 2011</a>
     </div>
     
 </body>

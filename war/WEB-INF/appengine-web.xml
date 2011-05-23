@@ -17,6 +17,8 @@
   <include path="/css/main.css"/>
     <include path="/css/photoorder.css"/>
     <include path="/photoorder.xsl"/>
+    <include path="/img/shellyphoto.png" />   
+    <include path="/img/butterfly.png" />
 </static-files>
 	
 	

@@ -1,0 +1,11 @@
+<!-- Indices written at Mon, 23 May 2011 18:34:04 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="POOrder" ancestor="false" source="auto">
+        <property name="customeremail" direction="asc"/>
+        <property name="orderdate" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>
