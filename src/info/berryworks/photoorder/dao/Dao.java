@@ -16,7 +16,7 @@ import javax.persistence.Query;
 
 
 
-
+@SuppressWarnings("unchecked")
 public enum Dao {
 	INSTANCE;
 
@@ -37,6 +37,7 @@ public enum Dao {
 			em.close();
 		}
 	}
+
 
 	public List<Todo> getTodos(String userId) {
 		EntityManager em = EMFService.get().createEntityManager();
