@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/xml; charset=UTF-8" pageEncoding="UTF-8"%><?xml version="1.0" ?>
+<%@ page language="java" contentType="text/xml; charset=UTF-8"
+	pageEncoding="UTF-8"%><?xml version="1.0" ?>
 <?xml-stylesheet type="text/xsl" href="photoorder.xsl"?>
-<%@ page import="info.berryworks.photoorder.dao.Dao" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="info.berryworks.photoorder.dao.Dao"%>
+<%@ page import="com.google.appengine.api.users.User"%>
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 
 <%
 UserService userService = UserServiceFactory.getUserService();

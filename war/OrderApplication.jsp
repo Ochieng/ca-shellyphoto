@@ -16,7 +16,7 @@
 <title>Shelly Photo - Order Prints</title>
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<meta charset="utf-8">  
+<meta charset="utf-8">
 <script type='text/javascript'>
   //<![CDATA[ 
              
@@ -58,10 +58,9 @@
 
 </head>
 <body onload='scroll()' onunload="setscroll()">
-<a href="/" ><img src="./img/shellyphoto.png" />
- </a>
+	<a href="/"><img src="./img/shellyphoto.png" /> </a>
 
-<%
+	<%
 	List<POOrder> orders = null;
 	List<POAlbum> albums = null;
 	List<POPhoto> photos = null;
@@ -72,9 +71,9 @@
 	User user = userService.getCurrentUser();
 	
 	if (user == null) { %>
-		<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
-		</body>
-		</html>
+	<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
+</body>
+</html>
 <%
 	return;
 	}
@@ -91,20 +90,18 @@
 		} catch ( Exception e) {;}
 	}
 %>
-	 <div id="debug"></div>		 
-<a href="<%=userService.createLogoutURL(request.getRequestURI())%>" >
-Logout 
-<%=pouser.getGroupid()%>
-<%=(user.getEmail())%>
+<div id="debug"></div>
+<a href="<%=userService.createLogoutURL(request.getRequestURI())%>">
+	Logout <%=pouser.getGroupid()%> <%=(user.getEmail())%>
 
 </a>
-<br/>
-<br/>
+<br />
+<br />
 <a href="/OrderAdd.jsp">add to order ...</a>
-<br/>
-<br/>
+<br />
+<br />
 <a href="/Confirm.jsp">confirm order ...</a>
-<br/>
+<br />
 <%
 orders = Dao.INSTANCE.getPOOrders(user.getEmail());
 if (orders == null) {
@@ -125,46 +122,56 @@ for ( POOrder o : orders) {
 }
 %>
 
-<h1> total = $<%=new java.text.DecimalFormat("0.00").format(total) %></h1>
-<br/>	
-	<%
+<h1>
+	total = $<%=new java.text.DecimalFormat("0.00").format(total) %></h1>
+<br />
+<%
 	
 for (POOrder order : orders)	 {
 	if ( order.getStatusInt() > 1 ) continue;
 	
 %>
-	<div class="card">	
+<div class="card">
 	<div class="cardhead">
-	<img class="cardimg" src="<%=order.getPhotoid()%>" />
+		<img class="cardimg" src="<%=order.getPhotoid()%>" />
 	</div>
-	<div class="cardbody" >	
-	<%=order.getAlbumid() %> <br />
-	<%=order.getType()%> <br />
-	<%if ( order.getType().compareTo("add to cd") != 0 ) {
-		%> <%=order.getQuantity()%>, 
-	<% } %>
-	$ <%=order.getPrice()%> <br />
-	<a class="done" href="/done?id=<%=order.getId()%>">remove</a>
+	<div class="cardbody">
+		<%=order.getAlbumid() %>
+		<br />
+		<%=order.getType()%>
+		<br />
+		<%if ( order.getType().compareTo("add to cd") != 0 ) {
+		%>
+		<%=order.getQuantity()%>,
+		<% } %>
+		$
+		<%=order.getPrice()%>
+		<br /> <a class="done" href="/done?id=<%=order.getId()%>">remove</a>
 	</div>
-	</div>
+</div>
 <%
 }
-%>	
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/><br/>
-<br/><br/>
-<br/><br/><br/>
-<br/><br/>
-    <div class="smallfont">
-    <a href="/Admin.jsp">shelly photo 2011</a>
-    </div>
-    
+%>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="smallfont">
+	<a href="/Admin.jsp">shelly photo 2011</a>
+</div>
+
 </body>
 </html>
 

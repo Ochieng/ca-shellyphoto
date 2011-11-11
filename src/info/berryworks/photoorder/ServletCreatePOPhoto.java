@@ -15,8 +15,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import info.berryworks.photoorder.dao.Dao;
 
-// todo put user check on admin servlets, so that i can post the code and not have
-// to worry about people guessing urls and fucking up our data
 @SuppressWarnings("serial")
 public class ServletCreatePOPhoto extends HttpServlet {
 	

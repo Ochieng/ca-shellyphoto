@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-	
-	
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+
 	<welcome-file-list>
-	<welcome-file>index.html</welcome-file>
-	
+		<welcome-file>index.html</welcome-file>
+
 	</welcome-file-list>
-		<icon>
+	<icon>
 		<small-icon>/favicon.ico</small-icon>
-		</icon>
+	</icon>
 	<servlet>
 		<servlet-name>ClearOrders</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletClearOrders</servlet-class>
@@ -21,7 +21,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ClearOrders</servlet-name>
 		<url-pattern>/clear</url-pattern>
 	</servlet-mapping>
-	
+
 	<!--Order -->
 	<servlet>
 		<servlet-name>CreateNewOrder</servlet-name>
@@ -31,8 +31,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CreateNewOrder</servlet-name>
 		<url-pattern>/new</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>RemoveOrder</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletRemoveOrder</servlet-class>
@@ -41,7 +41,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RemoveOrder</servlet-name>
 		<url-pattern>/done</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>RemoveOrderA</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletRemoveOrderA</servlet-class>
@@ -50,10 +50,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RemoveOrderA</servlet-name>
 		<url-pattern>/d</url-pattern>
 	</servlet-mapping>
-	
-	
-	
-		<servlet>
+
+
+
+	<servlet>
 		<servlet-name>CreateNewPOPhoto</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletCreatePOPhoto</servlet-class>
 	</servlet>
@@ -69,9 +69,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RemovePOPhoto</servlet-name>
 		<url-pattern>/delpop</url-pattern>
 	</servlet-mapping>
-	
-	
-	
+
+
+
 	<servlet>
 		<servlet-name>CreateNewPOUser</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletCreatePOUser</servlet-class>
@@ -88,9 +88,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RemovePOUser</servlet-name>
 		<url-pattern>/delpou</url-pattern>
 	</servlet-mapping>
-	
-	
-		
+
+
+
 	<servlet>
 		<servlet-name>CreateNewPOGroup</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletCreatePOGroup</servlet-class>
@@ -107,7 +107,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RemovePOGroup</servlet-name>
 		<url-pattern>/delpog</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CreateNewPOAlbum</servlet-name>
 		<servlet-class>info.berryworks.photoorder.ServletCreatePOAlbum</servlet-class>

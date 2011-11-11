@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="java.util.List"  %>
+<%@ page import="java.util.List"%>
 <%@ page import="info.berryworks.photoorder.model.POOrder"%>
 <%@ page import="info.berryworks.photoorder.model.POUser"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
@@ -7,10 +7,10 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="info.berryworks.photoorder.dao.Dao"%>
 <%@ page import="info.berryworks.photoorder.dao.EMFService"%>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.ArrayList"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="javax.persistence.EntityManager"%>
-<%@page import="javax.persistence.Query" %>
+<%@page import="javax.persistence.Query"%>
 <%@page import="javax.mail.Session"%>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 <meta charset="utf-8">
 </head>
 <body>
-<%
+	<%
 List<POOrder> orders = null;
 ArrayList<POOrder> conforders = null;
 POUser pouser = null;
@@ -32,9 +32,9 @@ String ftotal = null;
 
 if (user == null) {
 %>
-		<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
-		</body>
-		</html>
+	<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
+</body>
+</html>
 <%
 return;
 }
@@ -75,21 +75,28 @@ try {
 	}
 	ftotal = new java.text.DecimalFormat("0.00").format(total);
 %>
-<h1> Total $ <%=ftotal%></h1>
+<h1>
+	Total $
+	<%=ftotal%></h1>
 <%
 } catch(Exception e) {;}
 %>
-<br/><br/>
+<br />
+<br />
 <h2>pay with paypal</h2>
-<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="spriest@mcsnet.ca">
-<input type="hidden" name="currency_code" value="CAD">
-<input type="hidden" name="amount" value="<%=ftotal %>">
-<input type="hidden" name="item_name" value="shelly photo payment">
-<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr"
+	method="post">
+	<input type="hidden" name="cmd" value="_xclick"> <input
+		type="hidden" name="business" value="spriest@mcsnet.ca"> <input
+		type="hidden" name="currency_code" value="CAD"> <input
+		type="hidden" name="amount" value="<%=ftotal %>"> <input
+		type="hidden" name="item_name" value="shelly photo payment"> <input
+		type="image" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif"
+		border="0" name="submit"
+		alt="Make payments with PayPal - it's fast, free and secure!">
 </form>
-</br></br>
+</br>
+</br>
 <%
 try {
 //move orders to confirm status
@@ -123,15 +130,15 @@ String confdate = df.format(n);
 %>
 
 
-<br/>
-<br/>
+<br />
+<br />
 
-An email has been sent to you to confirm your order. 
-<br/>
+An email has been sent to you to confirm your order.
+<br />
 <%=confdate %>
 
-<br/>
-<br/>
+<br />
+<br />
 
 <a href="/">start new order ...</a>
 

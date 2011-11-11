@@ -18,7 +18,7 @@
 <meta charset="utf-8">
 </head>
 <body>
-<%
+	<%
 List<POOrder> orders = null;
 List<POAlbum> albums = null;
 List<POPhoto> photos = null;
@@ -31,9 +31,9 @@ UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
 	
 if (user == null) { %>
-	
-	</body>
-	</html>
+
+</body>
+</html>
 <%	return;
 }
 %>
@@ -45,15 +45,15 @@ if (user == null) { %>
 	if (pouser == null) {
 		
 		%>
-		<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
-		email admistrator to be granted access
-		</body>
-		</html>
-		<%
+<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
+email admistrator to be granted access
+</body>
+</html>
+<%
 		return;
 	}
 %>
-	 		 
+
 
 <%
 albumid = request.getParameter("albumid");
@@ -61,22 +61,23 @@ if (albumid == null) {
 	albums = Dao.INSTANCE.getGroupPOAlbums(pouser.getGroupid());
 	if (albums == null) return;
 	%>
-	<h1>Select Album </h1>
+<h1>Select Album</h1>
 <% 	
 	for ( POAlbum album : albums ){
 %>
-	<div class="flowlayout" >
-		<form action="/OrderAdd.jsp" method="post" accept-charset="utf-8">
-			<input type="hidden" name="albumid" id="albumid" value="<%=album.getName()%>" />	
-			<input type="image" src="<%=album.getNotes()%>" name="submit" />
-		</form>
-		<%=album.getName()%>
-	</div>	
+<div class="flowlayout">
+	<form action="/OrderAdd.jsp" method="post" accept-charset="utf-8">
+		<input type="hidden" name="albumid" id="albumid"
+			value="<%=album.getName()%>" /> <input type="image"
+			src="<%=album.getNotes()%>" name="submit" />
+	</form>
+	<%=album.getName()%>
+</div>
 <%	
 	}
 %>
-	</body>
-	</html>
+</body>
+</html>
 <%	return;
 }
 %>
@@ -89,25 +90,28 @@ if (photourl == null) {
 		}
 	%>
 
-<h1>Select Photo from <%=albumid %></h1>	
+<h1>
+	Select Photo from
+	<%=albumid %></h1>
 
 
 <%
 	for (POPhoto photo : photos) {
 		%>
-		<div class="flowlayout" >
-		<form action="/OrderAdd.jsp" method="post" accept-charset="utf-8">
-			<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
-			<input type="hidden" name="photourl" id="photourl" value="<%=photo.getPhotourl()%>" />
-			<input type="image" src="<%=photo.getPhotourl()%>" name="submit" />
-		</form>
-		</div>
-		<%
+<div class="flowlayout">
+	<form action="/OrderAdd.jsp" method="post" accept-charset="utf-8">
+		<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
+		<input type="hidden" name="photourl" id="photourl"
+			value="<%=photo.getPhotourl()%>" /> <input type="image"
+			src="<%=photo.getPhotourl()%>" name="submit" />
+	</form>
+</div>
+<%
 	}
 	%>
-	</body>
-	</html>
-	<%
+</body>
+</html>
+<%
 	return;
 	
 }
@@ -132,30 +136,35 @@ if ( printtype == null ) {
 %>
 <img src="<%=photourl%>" />
 <h1>Choose Format</h1>
-<br/>
+<br />
 <br />
 <form action="/new" method="post" accept-charset="utf-8">
-<input type="hidden" name="photourl" id="photourl" value="<%=photourl%>"  />
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>"  />
-<input type="hidden" name="type" id="type" value="add to cd" />
-<input type="hidden" name="orderdate" id="orderdate" value="<%=n.getTime() %>" />
-<input  type="hidden" name="quantity" id="quantity" value="1"/>
-<input type="submit" name="type" id="type" value="add to cd" />
+	<input type="hidden" name="photourl" id="photourl"
+		value="<%=photourl%>" /> <input type="hidden" name="albumid"
+		id="albumid" value="<%=albumid%>" /> <input type="hidden"
+		name="type" id="type" value="add to cd" /> <input type="hidden"
+		name="orderdate" id="orderdate" value="<%=n.getTime() %>" /> <input
+		type="hidden" name="quantity" id="quantity" value="1" /> <input
+		type="submit" name="type" id="type" value="add to cd" />
 </form>
-<br/><br/><br/>
+<br />
+<br />
+<br />
 <form action="/OrderAdd.jsp" method="post" accept-charset="utf-8">
-<input type="hidden" name="photourl" id="photourl" value="<%=photourl%>"  />
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>"  />
-<input  type="submit" name="type" id="type" value="16 x 20 wall portrait"/>
-<input  type="submit" name="type" id="type" value="8 x 10"/>
-<input  type="submit" name="type" id="type" value="5 x 7"/>
-<input  type="submit" name="type" id="type" value="4 x 6"/>
-<input  type="submit" name="type" id="type" value="3.5 x 5"/>
-<input  type="submit" name="type" id="type" value="wallets (8)"/>
-	
+	<input type="hidden" name="photourl" id="photourl"
+		value="<%=photourl%>" /> <input type="hidden" name="albumid"
+		id="albumid" value="<%=albumid%>" /> <input type="submit"
+		name="type" id="type" value="16 x 20 wall portrait" /> <input
+		type="submit" name="type" id="type" value="8 x 10" /> <input
+		type="submit" name="type" id="type" value="5 x 7" /> <input
+		type="submit" name="type" id="type" value="4 x 6" /> <input
+		type="submit" name="type" id="type" value="3.5 x 5" /> <input
+		type="submit" name="type" id="type" value="wallets (8)" />
+
 </form>
 
-<br/><br/>
+<br />
+<br />
 <pre>
 16 x 20 wall portrait		$30.00						
 11x14 wall portrait		$20.00						
@@ -181,24 +190,28 @@ if ( quantity == null ) {
 
 %>
 <img src="<%=photourl%>" />
-<h1>How many <%=printtype %>'s?</h1>
+<h1>
+	How many
+	<%=printtype %>'s?
+</h1>
 <form action="/new" method="post" accept-charset="utf-8">
-<input type="hidden" name="photourl" id="photourl" value="<%=photourl%>"  />
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>"  />
-<input type="hidden" name="type" id="type" value="<%=printtype %>" />
-<input type="hidden" name="orderdate" id="orderdate" value="<%=n.getTime() %>" />
-<input  type="submit" name="quantity" id="quantity" value="1"/>
-<input  type="submit" name="quantity" id="quantity" value="2"/>
-<input  type="submit" name="quantity" id="quantity" value="3"/>
-<input  type="submit" name="quantity" id="quantity" value="4"/>
-<input  type="submit" name="quantity" id="quantity" value="5"/>
-<input  type="submit" name="quantity" id="quantity" value="6"/>
-<input  type="submit" name="quantity" id="quantity" value="7"/>
-<input  type="submit" name="quantity" id="quantity" value="8"/>
-<input  type="submit" name="quantity" id="quantity" value="9"/>
-<input  type="submit" name="quantity" id="quantity" value="10"/>
+	<input type="hidden" name="photourl" id="photourl"
+		value="<%=photourl%>" /> <input type="hidden" name="albumid"
+		id="albumid" value="<%=albumid%>" /> <input type="hidden"
+		name="type" id="type" value="<%=printtype %>" /> <input type="hidden"
+		name="orderdate" id="orderdate" value="<%=n.getTime() %>" /> <input
+		type="submit" name="quantity" id="quantity" value="1" /> <input
+		type="submit" name="quantity" id="quantity" value="2" /> <input
+		type="submit" name="quantity" id="quantity" value="3" /> <input
+		type="submit" name="quantity" id="quantity" value="4" /> <input
+		type="submit" name="quantity" id="quantity" value="5" /> <input
+		type="submit" name="quantity" id="quantity" value="6" /> <input
+		type="submit" name="quantity" id="quantity" value="7" /> <input
+		type="submit" name="quantity" id="quantity" value="8" /> <input
+		type="submit" name="quantity" id="quantity" value="9" /> <input
+		type="submit" name="quantity" id="quantity" value="10" />
 
-	
+
 </form>
 </body>
 </html>

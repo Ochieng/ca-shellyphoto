@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<%
+	<%
 UserService userService = UserServiceFactory.getUserService();
 User user = userService.getCurrentUser();
 
@@ -28,10 +28,10 @@ boolean lock = true;
 if (user == null) {
 	%>
 	<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
-	
-	</body>
-	</html>
-	<%
+
+</body>
+</html>
+<%
 	return;
 }
 
@@ -41,10 +41,10 @@ if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
 if (lock) {
 
 	%>
-	<h1> not admin sorry </h1>
-	</body>
-	</html>
-	<%
+<h1>not admin sorry</h1>
+</body>
+</html>
+<%
 	return;
 }
 
@@ -76,7 +76,9 @@ for ( POOrder o : orders) {
 <h2>totals</h2>
 <% 
 for ( double d : total) {
-%>  $ <%=new java.text.DecimalFormat("0.00").format(d)%>
+%>
+$
+<%=new java.text.DecimalFormat("0.00").format(d)%>
 <%
  }
 %>
@@ -87,24 +89,27 @@ while (iter.hasPrevious()) {
 	order = (POOrder) iter.previous();	
 	
 %>
-	<div class="card">	
+<div class="card">
 	<div class="cardhead">
 		<img class="cardimg" src="<%=order.getPhotoid()%>" />
 	</div>
-	<div class="cardbody" >
-	<%=order.getCustomeremail() %>
-	<%=order.getStatusString()%> <br />
-	<%=order.getAlbumid() %> <br />
-	<%=order.getOrderdate()%><br />
-	<%=order.getType()%> <br />
-	<%=order.getQuantity()%>, 
-	$ <%=order.getPrice()%> <br />
-	<a class="done" href="/d?id=<%=order.getId()%>">del</a>
+	<div class="cardbody">
+		<%=order.getCustomeremail() %>
+		<%=order.getStatusString()%>
+		<br />
+		<%=order.getAlbumid() %>
+		<br />
+		<%=order.getOrderdate()%><br />
+		<%=order.getType()%>
+		<br />
+		<%=order.getQuantity()%>, $
+		<%=order.getPrice()%>
+		<br /> <a class="done" href="/d?id=<%=order.getId()%>">del</a>
 	</div>
-	</div>
+</div>
 <%
 }
-%>	
+%>
 </body>
 </html>
 

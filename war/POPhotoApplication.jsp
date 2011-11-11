@@ -1,14 +1,14 @@
 <%@page import="java.net.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="info.berryworks.photoorder.model.*" %>
-<%@ page import="info.berryworks.photoorder.dao.Dao" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.google.appengine.api.users.User"%>
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@ page import="info.berryworks.photoorder.model.*"%>
+<%@ page import="info.berryworks.photoorder.dao.Dao"%>
 <%@page import="java.util.ArrayList"%>
-    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +17,7 @@
 <title>Photos</title>
 </head>
 <body>
-<%
+	<%
 String albumid = null;
 
 UserService userService = UserServiceFactory.getUserService();
@@ -29,10 +29,10 @@ boolean lock = true;
 if (user == null) {
 	%>
 	<a href="<%=userService.createLoginURL(request.getRequestURI())%>">login</a>
-	
-	</body>
-	</html>
-	<%
+
+</body>
+</html>
+<%
 	return;
 }
 
@@ -42,10 +42,10 @@ if ( 0 == user.getEmail().compareTo("spriestphoto@gmail.com") ) lock = false;
 if (lock) {
 
 	%>
-	<h1> not admin sorry </h1>
-	</body>
-	</html>
-	<%
+<h1>not admin sorry</h1>
+</body>
+</html>
+<%
 	return;
 }
 
@@ -64,15 +64,18 @@ if (albumid == null) {
 %>
 
 <form action="/POPhotoApplication.jsp" method="post"
-accept-charset="utf-8"><select name="albumid" id="albumid">
-<%
+	accept-charset="utf-8">
+	<select name="albumid" id="albumid">
+		<%
 	for (POAlbum album : albums) { %>
-			<option value="<%=album.getName()%>"><%=album.getName()%></option>
-<%	}
-%>		</select> <input type="submit" value="select album" /></form>
-		</body>
-	</html>
-	<%
+		<option value="<%=album.getName()%>"><%=album.getName()%></option>
+		<%	}
+%>
+	</select> <input type="submit" value="select album" />
+</form>
+</body>
+</html>
+<%
 	return;
 }
 
@@ -81,82 +84,88 @@ if (photos==null) {
 	return;
 }
 %>
-	<%
+<%
 for (POPhoto photo : photos ){ %>
-<div class="card" >
-	
-	<img class="cardimg" src="<%= photo.getPhotourl() %>" />
-	<br/>
+<div class="card">
+
+	<img class="cardimg" src="<%= photo.getPhotourl() %>" /> <br />
 	<%= photo.getAlbumid() %>
-	<br/>
+	<br />
 	<%= photo.getNotes() %>
 	<a class="delpop" href="/delpop?id=<%=photo.getId()%>">del</a>
-		</div>
+</div>
 
-	<% } %>
-	
+<% } %>
 
-<h1>New Photo for <%=albumid %> </h1>
+
+<h1>
+	New Photo for
+	<%=albumid %>
+</h1>
 
 <form action="/newpop" method="post" accept-charset="utf-8">
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
-<table>
-	
-	<tr>
-		<td><label for="photourl">Photo URL </label></td>
-		<td><input type="text" name="photourl" id="photourl" size="65" /></td>
-	</tr>
-	<tr>
-		<td><label for="notes">Notes </label></td>
-		<td><input type="text" name="notes" id="notes" size="65" /></td>
-	</tr>
-	<tr>
-		<td colspan="2" align="right"><input type="submit" value="Create" /></td>
-	</tr>
-</table>
+	<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
+	<table>
+
+		<tr>
+			<td><label for="photourl">Photo URL </label></td>
+			<td><input type="text" name="photourl" id="photourl" size="65" /></td>
+		</tr>
+		<tr>
+			<td><label for="notes">Notes </label></td>
+			<td><input type="text" name="notes" id="notes" size="65" /></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right"><input type="submit"
+				value="Create" /></td>
+		</tr>
+	</table>
 </form>
 
 
-<h1>Or Add all Photos from web page into <%=albumid %> </h1>
+<h1>
+	Or Add all Photos from web page into
+	<%=albumid %>
+</h1>
 
 <form action="/addurl" method="post" accept-charset="utf-8">
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
-<table>
-	
-	<tr>
-		<td><label for="url">web page URL </label></td>
-		<td><input type="text" name="url" id="url" size="65" /></td>
-	</tr>
-	<tr>	
-	<td><label for="width">set picassa size folder</label></td>
-		<td><select name="width" id="width"  />
-			<option value=""> </option>
-			<option value="s150">s150</option>
-			<option value="s200">s200</option>
-			<option value="s250">s250</option>
-			<option value="s300">s300</option>
-			<option value="s350">s350</option>
-			<option value="s400">s400</option>
-			<option value="s150-c">s150-c</option>
-			<option value="s200-c">s200-c</option>
-			<option value="s250-c">s250-c</option>
-			<option value="s300-c">s300-c</option>
-			<option value="s350-c">s350-c</option>
-			<option value="s400c-">s400-c</option>	
-		</select> 
-	</tr>
-	
-	<tr>
-		<td colspan="2" align="right"><input type="submit" value="Add Multiple" /></td>
-	</tr>
-	
-</table>
+	<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
+	<table>
+
+		<tr>
+			<td><label for="url">web page URL </label></td>
+			<td><input type="text" name="url" id="url" size="65" /></td>
+		</tr>
+		<tr>
+			<td><label for="width">set picassa size folder</label></td>
+			<td><select name="width" id="width" />
+				<option value=""></option>
+				<option value="s150">s150</option>
+				<option value="s200">s200</option>
+				<option value="s250">s250</option>
+				<option value="s300">s300</option>
+				<option value="s350">s350</option>
+				<option value="s400">s400</option>
+				<option value="s150-c">s150-c</option>
+				<option value="s200-c">s200-c</option>
+				<option value="s250-c">s250-c</option>
+				<option value="s300-c">s300-c</option>
+				<option value="s350-c">s350-c</option>
+				<option value="s400c-">s400-c</option> </select>
+		</tr>
+
+		<tr>
+			<td colspan="2" align="right"><input type="submit"
+				value="Add Multiple" /></td>
+		</tr>
+
+	</table>
 </form>
 
 <h1>Delete all photos in this album</h1>
 <form action="/dpia" method="post" accept-charset="utf-8">
-<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
-<input type="submit" value="Remove All" />
+	<input type="hidden" name="albumid" id="albumid" value="<%=albumid%>" />
+	<input type="submit" value="Remove All" />
 </form>
 </body>
 </html>
