@@ -11,3 +11,34 @@ The model classes are: Orders, Groups, Users, Albums, Photos
 the application is running at
 
 https://ca-shellyphoto.appspot.com
+
+
+Features
+
+group privileges – access control lists associates users and groups, and each group has access to different products. Along with encryption this means the site is private.
+
+Shopping cart has no time limit – a person can come and go over a number of different days and the order remains in tact.
+
+System is platform neutral – since most of the work is done on the servers the customer can use any device with a web browser.
+
+Administration of albums is integrated with picasa (but not limited too), so uploading of photos and photo resizing can be done in large batches.
+
+Email notifications – confirmations and instructions sent using email.
+
+Made using html, java servlets, jsp, xml, xslt, css, eclipse, google appengine which are all also platform neutral.
+
+Google App Engine is a combination of middle-ware and server functionality. Servers are maintained by google and on all the time.
+
+The servlets and jsp pages use the google code and java data object code to manage the data and provide authentication. Google bigtable is not a relational database but you can create relational features and query using GQL
+
+There are 5 model classes - Users, Groups, Photos, Albums, and Orders. Then a utility class for data access, then the rest is just wiring – servlets for the database operations and jsp for the user interface.
+
+Hosting so far is free, on the days that I tested the application the heaviest, I used less than 1 percent of my resource quota.
+
+Its responsive. The shopping cart is like a pile of cards and you can add and remove them. I could do a lot here with the visuals, but choose to keep it simple.
+
+Its easy to modify.
+
+Its untested and needs testers. http://ca-shellyphoto.appspot.com 
+
+xml capabilities are nice for debug - firefox and chrome do a good job with the output of xml.jsp - that page uses client side xsl, however its a restricted page only administrators have access too.
